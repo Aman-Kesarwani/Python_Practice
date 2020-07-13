@@ -1,22 +1,16 @@
 class Point:
+    def __init__(self, x, y):
+        self.xPos = x
+        self.yPos = y
 
-    default_color = "orange"  # class level attributes shared accross all objects
-
-    def __init__(self, x, y):  # self is reference to current obj
-        self.x = x
-        self.y = y
+    @classmethod
+    def zero(cls):  # reference to class
+        return cls(0, 0)
 
     def draw(self):
-        print(f"Point ({self.x}, {self.y})")
+        print(f"Point ({self.xPos}, {self.yPos})")
 
 
-Point.default_color = "black"
-point = Point(1, 2)
-print(point.default_color)
-print(Point.default_color)
-point.z = 10  # can define object later also
-point.draw()
-
-another = Point(201, 202)
-print(another.default_color)
-another.draw()
+#point = Point(15, 16)
+point_1 = Point.zero()
+point_1.draw()
