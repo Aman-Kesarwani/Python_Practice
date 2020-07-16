@@ -17,13 +17,13 @@ class DropDownList(GUIControl):
         print("DDL: Create Drop Down List")
 
 
-def draw(guicontrol):
-    guicontrol.draw()
+def draw(guicontrols):
+    for control in guicontrols:
+        control.draw()
 
 
 ddl = DropDownList()
-print(isinstance(ddl, GUIControl))
-draw(ddl)
 
 txtbox = TextBox()
-draw(txtbox)
+
+draw([ddl, txtbox])

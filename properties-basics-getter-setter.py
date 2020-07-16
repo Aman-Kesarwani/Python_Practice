@@ -1,19 +1,25 @@
-class Commodity:
-    def __init__(self, price):
-        self.price = price
+class Animal:
+    def __init__(self):
+        self.age = 1
 
-    @property
-    def price(self):
-        return self.__price
+    def eat(self):
+        print("eat")
 
-    @price.setter
-    def price(self, value):
-        if value < 0:
-            raise ValueError("How can price be negative?")
-        self.__price = value
+# Child, Sub
 
 
-commodity = Commodity(10)
-print(commodity.price)
-commodity.price = 50
-print(commodity.price)
+class Mammal(Animal):
+    def walk(self):
+        print("walk")
+
+# Child, Sub
+
+
+class Fish(Animal):
+    def swim(self):
+        print("swim")
+
+
+mammal = Mammal()
+print(mammal.age)
+mammal.eat()

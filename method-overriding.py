@@ -1,24 +1,39 @@
-class Animal:
-    def __init__(self):
-        self.age = 1
-        print("Animal Constructor")
+class Employee:
+    def greet(self):
+        print("Employee Greet")
 
+
+class Person:
+    def greet(self):
+        print("Person Greet")
+
+
+class Manager(Person, Employee):
+    pass
+
+
+manager = Manager()
+manager.greet()  # Person greet will be called as per order of inheritance
+
+###########
+
+
+class FlyingCreature:
+    def fly(self):
+        print("Fly")
+
+
+class SwimmingCreature:
+    def swim(self):
+        print("swim")
+
+
+class FlyingFish(FlyingCreature, SwimmingCreature):
     def eat(self):
-        print("eat")
+        print("Eat")
 
 
-class Mammal(Animal):
-
-    def __init__(self):
-        print("Mammal Constructor")
-        self.weight = 2
-        super().__init__()
-
-    def walk(self):
-        print("walk")
-
-
-mammal = Mammal()
-mammal.eat()
-print(mammal.age)
-print(mammal.weight)
+fish = FlyingFish()
+fish.fly()
+fish.swim()
+fish.eat()

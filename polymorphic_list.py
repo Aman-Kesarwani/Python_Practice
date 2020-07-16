@@ -1,29 +1,29 @@
-from abc import ABC, abstractmethod
+class Text(str):
+    def duplicate(self):
+        return self + self
 
 
-class GUIControl(ABC):
-    @abstractmethod
-    def draw(self):
-        pass
+class CustomList(list):
+    def append(self, object):
+
+        if object == "4":
+            print("Skipped Append for", object)
+        else:
+            print("Append Called")
+            super().append(object)
 
 
-class TextBox(GUIControl):
-    def draw(self):
-        print("TextBox: Create Text BOX")
+text = Text("JAVA")
+print(id(text))
+duplicate_text = text.duplicate()
+text = text.lower()
+print(id(text))
+print(text)
+print(duplicate_text)
 
+my_list = CustomList()
+my_list.append("2")
+my_list.append("3")
+my_list.append("4")
 
-class DropDownList(GUIControl):
-    def draw(self):
-        print("DDL: Create Drop Down List")
-
-
-def draw(guicontrols):
-    for control in guicontrols:
-        control.draw()
-
-
-ddl = DropDownList()
-
-txtbox = TextBox()
-
-draw([ddl, txtbox])
+print(my_list)

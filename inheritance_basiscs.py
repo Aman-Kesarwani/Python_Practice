@@ -21,5 +21,19 @@ class Fish(Animal):
 
 
 mammal = Mammal()
+
+# Below cases print "True"
+print(isinstance(mammal, object))
+print(isinstance(mammal, Animal))
+print(isinstance(mammal, Mammal))
+
+# Below cases print "True"
+print(issubclass(Mammal, object))
+print(issubclass(Mammal, Animal))
+
+# Below case prints "False"
+print(issubclass(Mammal, Fish))
+
 print(mammal.age)
 mammal.eat()
+o1 = object()

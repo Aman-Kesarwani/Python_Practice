@@ -1,39 +1,63 @@
-class Employee:
-    def greet(self):
-        print("Employee Greet")
+from abc import ABC, abstractmethod
 
 
-class Person:
-    def greet(self):
-        print("Person Greet")
-
-
-class Manager(Person, Employee):
+class InvalidOperationError(Exception):
     pass
 
 
-manager = Manager()
-manager.greet()  # Person greet will be called as per order of inheritance
+class Stream(ABC):
+    def __init__(self):
+        self.opened = False
 
-# Below muliple inheritance usage is logically correct
+    def open(self):
+        if self.opened:
+            raise InvalidOperationError("Stream is already open")
+
+        self.opened = True
+        print("Stream Opened")
+
+    def close(self):
+        if not self.opened:
+            raise InvalidOperationError("Stream is already closed")
+
+        self.opened = False
+        print("Stream Closed")
+
+    @abstractmethod
+    def read(self):
+        pass
 
 
-class FlyingCreature:
-    def fly(self):
-        print("Fly")
+class FileStream(Stream):
+    def read(self):
+        print("Read data from File")
 
 
-class SwimmingCreature:
-    def swim(self):
-        print("swim")
+class NetworkStream(Stream):
+    def read(self):
+        print("Read data from a network")
 
 
-class FlyingFish(FlyingCreature, SwimmingCreature):
-    def eat(self):
-        print("Eat")
+class MemoryStream(Stream):
+    def read(self):
+        print("Read data from memory")
 
 
-fish = FlyingFish()
-fish.fly()
-fish.swim()
-fish.eat()
+print("**********************\n")
+
+stream = MemoryStream()
+stream.open()
+stream.read()
+stream.close()
+print("**********************\n")
+
+steam_1 = NetworkStream()
+steam_1.open()
+steam_1.read()
+steam_1.close()
+
+print("**********************\n")
+steam_2 = FileStream()
+steam_2.open()
+steam_2.read()
+steam_2.close()
